@@ -469,10 +469,6 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
         if(UrlQuery::shouldAppendTrailingSlash()) {
             $path .= '/';
         }
-		$this->getLogger(__METHOD__)->error('getReturnURL', [
-            '$path' => $path,
-			'slash' => UrlQuery::shouldAppendTrailingSlash()								
-        ]);
         return $path;
     }
 
@@ -921,10 +917,6 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
         if(UrlQuery::shouldAppendTrailingSlash()) {
             $path .= '/';
         }
-		$this->getLogger(__METHOD__)->error('getprocessPayment', [
-            '$path' => $path,
-			'slash' => UrlQuery::shouldAppendTrailingSlash()								
-        ]);
         return $path;
     }
 
