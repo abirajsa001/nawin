@@ -17,7 +17,7 @@ use Plenty\Modules\Basket\Models\Basket;
 use Plenty\Modules\Payment\Models\Payment;
 use Plenty\Plugin\Application;
 use Plenty\Plugin\Translation\Translator;
-
+use Plenty\Plugin\Log\Loggable;
 /**
  * Class NovalnetPaymentAbstract
  *
@@ -26,7 +26,7 @@ use Plenty\Plugin\Translation\Translator;
 abstract class NovalnetPaymentAbstract extends PaymentMethodBaseService
 {
     const PAYMENT_KEY = 'Novalnet';
-
+    use Loggable;
     /**
      * @var BasketRepositoryContract
      */
@@ -83,11 +83,13 @@ abstract class NovalnetPaymentAbstract extends PaymentMethodBaseService
             $isPaymentActive = ($guaranteeStatus == 'normal') ? true : false;
         }
         if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_PAYCONIQ'){
-
+            $this->getLogger(__METHOD__)->error('get active' . $isPaymentActive, $this);
+            $this->getLogger(__METHOD__)->error('get name' . $this::PAYMENT_KEY, $this);
             $isPaymentActive = false;
 
         }
-
+        $this->getLogger(__METHOD__)->error('test' . $isPaymentActive, $this);
+        $this->getLogger(__METHOD__)->error('test name' . $this::PAYMENT_KEY, $this);
         if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_SEPA') {
             $guaranteeStatus = $this->paymentService->isGuaranteePaymentToBeDisplayed($this->basketRepository, 'novalnet_guaranteed_sepa');
             $isPaymentActive = ($guaranteeStatus == 'normal') ? true : false;
