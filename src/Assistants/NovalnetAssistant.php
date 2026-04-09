@@ -1010,10 +1010,14 @@ class NovalnetAssistant extends WizardProvider
     protected function getLanguage()
     {
 
-        /** @var SystemInformationRepositoryContract $systemInformationRepository */
-        $systemInformationRepository = pluginApp(SystemInformationRepositoryContract::class);
-        // TODO: this seems not be the log-in language. Where to get it?
-        $this->language = $systemInformationRepository->loadValue('systemLang');
+        // /** @var SystemInformationRepositoryContract $systemInformationRepository */
+        // $systemInformationRepository = pluginApp(SystemInformationRepositoryContract::class);
+        // $this->language = $systemInformationRepository->loadValue('systemLang');
+        // return $this->language;
+        if ($this->language === null) {
+            $this->language =  \Locale::getDefault();
+        }
+
         return $this->language;
     }
 }
