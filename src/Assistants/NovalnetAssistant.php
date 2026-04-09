@@ -779,7 +779,8 @@ class NovalnetAssistant extends WizardProvider
                                  'name'     => 'NovalnetAssistant.novalnetGooglepayButtonHeightLabel',
                                  'tooltip'  => 'NovalnetAssistant.novalnetGooglepayButtonHeightTooltip',
                                  'min'      => 30,
-                                 'max'      => 60,
+                                 'max'      => 64,
+                                 'step'     => 1,
                                 ]
             ]
         ];
