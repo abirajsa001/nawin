@@ -774,10 +774,12 @@ class NovalnetAssistant extends WizardProvider
             ],
             'novalnetGooglepayButtonHeight' =>
             [
-                  'type'    => 'text',
+                  'type'    => 'number',
                   'options' => [
                                  'name'     => 'NovalnetAssistant.novalnetGooglepayButtonHeightLabel',
                                  'tooltip'  => 'NovalnetAssistant.novalnetGooglepayButtonHeightTooltip',
+                                 'min'      => 30,
+                                 'max'      => 60,
                                 ]
             ]
         ];
@@ -1009,11 +1011,6 @@ class NovalnetAssistant extends WizardProvider
      */
     protected function getLanguage()
     {
-
-        // /** @var SystemInformationRepositoryContract $systemInformationRepository */
-        // $systemInformationRepository = pluginApp(SystemInformationRepositoryContract::class);
-        // $this->language = $systemInformationRepository->loadValue('systemLang');
-        // return $this->language;
         if ($this->language === null) {
             $this->language =  \Locale::getDefault();
         }
