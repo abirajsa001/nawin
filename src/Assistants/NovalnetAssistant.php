@@ -505,52 +505,83 @@ class NovalnetAssistant extends WizardProvider
     * @return array
     */
 	public function createOnHoldConfiguration($config)
-	{
-		$onHoldSupportedPayments = ['novalnetSepa', 'novalnetCc', 'novalnetInvoice', 'novalnetGuaranteedInvoice', 'novalnetGuaranteedSepa','novalnetPaypal', 'novalnetApplepay', 'novalnetGooglepay', 'novalnetInstalmentInvoice', 'novalnetInstalmentSepa'];
+{
+    $onHoldSupportedPayments = [
+        'novalnetSepa', 'novalnetCc', 'novalnetInvoice',
+        'novalnetGuaranteedInvoice', 'novalnetGuaranteedSepa',
+        'novalnetPaypal', 'novalnetApplepay', 'novalnetGooglepay',
+        'novalnetInstalmentInvoice', 'novalnetInstalmentSepa'
+    ];
 
-		$zeroAmountSupportedPayments = ['novalnetSepa', 'novalnetCc', 'novalnetApplepay', 'novalnetGooglepay', 'novalnetAch'];
+    $onAllowedSupportedPayments = [
+        'novalnetSepa', 'novalnetCc', 'novalnetInvoice',
+        'novalnetGuaranteedInvoice', 'novalnetGuaranteedSepa',
+        'novalnetPaypal', 'novalnetApplepay', 'novalnetGooglepay',
+        'novalnetInstalmentInvoice', 'novalnetInstalmentSepa',
+        'novalnetAch'
+    ];
 
-		foreach ($onHoldSupportedPayments as $payment) {
-            $listBoxValues = [
-                [
-                    'caption' => 'NovalnetAssistant.novalnetOnHoldCaptureLabel',
-                    'value'   => 0
-                ],
-                [
-                    'caption' => 'NovalnetAssistant.novalnetOnHoldAuthorizeLabel',
-                    'value'   => 1
+    $zeroAmountSupportedPayments = [
+        'novalnetSepa', 'novalnetCc',
+        'novalnetApplepay', 'novalnetGooglepay', 'novalnetAch'
+    ];
+
+    foreach ($onAllowedSupportedPayments as $payment) {
+
+        // Base options
+        $listBoxValues = [
+            [
+                'caption' => 'NovalnetAssistant.novalnetOnHoldCaptureLabel',
+                'value'   => 0
+            ]
+        ];
+
+        // Add authorize option
+        if (in_array($payment, $onHoldSupportedPayments)) {
+            $listBoxValues[] = [
+                'caption' => 'NovalnetAssistant.novalnetOnHoldAuthorizeLabel',
+                'value'   => 1
+            ];
+        }
+
+        // Add zero amount option
+        if (in_array($payment, $zeroAmountSupportedPayments)) {
+            $listBoxValues[] = [
+                'caption' => 'NovalnetAssistant.novalnetZeroAmountLabel',
+                'value'   => 2
+            ];
+        }
+
+        // Build form dynamically
+        $form = [
+            $payment . 'PaymentAction' => [
+                'type'         => 'select',
+                'defaultValue' => 0,
+                'options'      => [
+                    'name'          => 'NovalnetAssistant.novalnetPaymentActionLabel',
+                    'listBoxValues' => $listBoxValues
+                ]
+            ]
+        ];
+
+        // Add OnHold field only if supported
+        if (in_array($payment, $onHoldSupportedPayments)) {
+            $form[$payment . 'OnHold'] = [
+                'type'    => 'text',
+                'options' => [
+                    'name'    => 'NovalnetAssistant.novalnetOnHoldLabel',
+                    'tooltip' => 'NovalnetAssistant.novalnetOnHoldTooltip'
                 ]
             ];
+        }
 
-			// Add Zero Amount option only for supported payments
-			if (in_array($payment, $zeroAmountSupportedPayments)) {
-				$listBoxValues[] = [
-					'caption' => 'NovalnetAssistant.novalnetZeroAmountLabel',
-					'value'   => 2
-				];
-			}
+        // Assign to config
+        $config['steps'][$payment]['sections'][]['form'] = $form;
+    }
 
-			$config['steps'][$payment]['sections'][]['form'] = [
-				$payment . 'PaymentAction' => [
-					'type'         => 'select',
-					'defaultValue' => 0,
-					'options'      => [
-						'name'          => 'NovalnetAssistant.novalnetPaymentActionLabel',
-						'listBoxValues' => $listBoxValues
-					]
-				],
-				$payment . 'OnHold' => [
-					'type'    => 'text',
-					'options' => [
-						'name'    => 'NovalnetAssistant.novalnetOnHoldLabel',
-						'tooltip' => 'NovalnetAssistant.novalnetOnHoldTooltip'
-					]
-				]
-			];
-		}
+    return $config;
+}
 
-		return $config;
-	}
 
 
     /**
