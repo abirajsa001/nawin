@@ -18,6 +18,7 @@ use Novalnet\Services\SettingsService;
 use Plenty\Modules\Frontend\Session\Storage\Contracts\FrontendSessionStorageFactoryContract;
 use Plenty\Modules\Basket\Contracts\BasketRepositoryContract;
 use Plenty\Plugin\Templates\Twig;
+use Plenty\Modules\Webshop\Helpers\UrlQuery;
 
 /**
  * Class PaymentController
@@ -230,7 +231,11 @@ class PaymentController extends Controller
             $paymentRequestData['paymentRequestData']['transaction']['return_url'] = $this->paymentService->getReturnPageUrl();
             $this->sessionStorage->getPlugin()->setValue('nnPaymentData', $paymentRequestData);
             if(!empty($paymentRequestPostData['nn_reinitializePayment']) || $this->settingsService->getPaymentSettingsValue('novalnet_order_creation') != true) {
-                return $this->response->redirectTo($this->sessionStorage->getLocaleSettings()->language . '/payment/novalnet/redirectPayment');
+                $path = $this->response->redirectTo($this->sessionStorage->getLocaleSettings()->language . '/payment/novalnet/redirectPayment');
+                if(UrlQuery::shouldAppendTrailingSlash()) {
+                    $path .= '/';
+                }
+                return $path;
             }
                 // Call the shop executePayment function
                 return $this->response->redirectTo($this->sessionStorage->getLocaleSettings()->language . '/place-order');
