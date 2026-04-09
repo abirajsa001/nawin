@@ -82,6 +82,11 @@ abstract class NovalnetPaymentAbstract extends PaymentMethodBaseService
             $guaranteeStatus = $this->paymentService->isGuaranteePaymentToBeDisplayed($this->basketRepository, 'novalnet_guaranteed_invoice');
             $isPaymentActive = ($guaranteeStatus == 'normal') ? true : false;
         }
+        if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_PAYCONIQ'){
+
+            $isPaymentActive = false;
+
+        }
 
         if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_SEPA') {
             $guaranteeStatus = $this->paymentService->isGuaranteePaymentToBeDisplayed($this->basketRepository, 'novalnet_guaranteed_sepa');
@@ -96,6 +101,7 @@ abstract class NovalnetPaymentAbstract extends PaymentMethodBaseService
             $isPaymentActive = $this->paymentService->isInstalmentPaymentToBeDisplayed($this->basketRepository, strtolower($this::PAYMENT_KEY));
         }
         if($isPaymentActive) {
+
             // Check if the payment allowed for mentioned countries
             $activatePaymentAllowedCountry = true;
             if($allowedCountry = $this->settingsService->getPaymentSettingsValue('allowed_country', strtolower($this::PAYMENT_KEY))) {
