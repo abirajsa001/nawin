@@ -84,7 +84,7 @@ abstract class NovalnetPaymentAbstract extends PaymentMethodBaseService
         }
         if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_PAYCONIQ'){
 
-            return false;
+            $isPaymentActive = false;
 
         }
         if($isPaymentActive && $this::PAYMENT_KEY == 'NOVALNET_SEPA') {
