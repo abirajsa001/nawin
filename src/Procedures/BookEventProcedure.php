@@ -230,7 +230,7 @@ class BookEventProcedure
             $this->getLogger(__METHOD__)->error('orderdata details', [
                 'order'     => $order,
                 'orderData' => $orderData							
-            ])
+            ]);
             // Building the transaction Data
             $paymentRequestData['transaction'] = [
                 'test_mode'         => ($this->settingsService->getPaymentSettingsValue('test_mode', $paymentKeyLower) == true) ? 1 : 0,
@@ -252,7 +252,7 @@ class BookEventProcedure
             $this->getLogger(__METHOD__)->error('paymentrequest', [
                 'request'     => $paymentRequestData,
                 'response'    => $paymentResponseData							
-            ])
+            ]);
             $paymentResponseData['bookingText'] = sprintf($this->paymentHelper->getTranslatedText('webhook_zero_amount_booking', $this->orderLanguage),$paymentResponseData['transaction']['amount'], $paymentResponseData['transaction']['tid']);
             // Insert the refund details into Novalnet DB
             $this->paymentService->insertPaymentResponse($paymentResponseData);
