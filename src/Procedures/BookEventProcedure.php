@@ -251,7 +251,8 @@ class BookEventProcedure
             $paymentResponseData = $this->paymentHelper->executeCurl($paymentRequestData, NovalnetConstants::PAYMENT_URL, $privateKey);
             $this->getLogger(__METHOD__)->error('paymentrequest', [
                 'request'     => $paymentRequestData,
-                'response'    => $paymentResponseData							
+                'response'    => $paymentResponseData,
+                'transactionDetails' => $transactionDetails 							
             ]);
             $paymentResponseData['bookingText'] = sprintf($this->paymentHelper->getTranslatedText('webhook_zero_amount_booking', $this->orderLanguage),$paymentResponseData['transaction']['amount'], $paymentResponseData['transaction']['tid']);
             // Insert the refund details into Novalnet DB
