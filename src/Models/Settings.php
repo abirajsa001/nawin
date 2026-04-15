@@ -88,7 +88,6 @@ class Settings extends Model
             'novalnet_trustly'              => $data['novalnet_trustly'],
             'novalnet_googlepay'            => $data['novalnet_googlepay'],
             'novalnet_blik'            		=> $data['novalnet_blik'],
-            'novalnet_payconiq'            	=> $data['novalnet_payconiq'],
             'novalnet_mbway'            	=> $data['novalnet_mbway'],
             'novalnet_ach'            		=> $data['novalnet_ach'],
             'novalnet_twint'            	=> $data['novalnet_twint'],
@@ -194,9 +193,6 @@ class Settings extends Model
         }
 		if(isset($data['novalnet_blik'])) {
             $this->value['novalnet_blik'] = $data['novalnet_blik'];
-        }
-        if(isset($data['novalnet_payconiq'])) {
-            $this->value['novalnet_payconiq'] = $data['novalnet_payconiq'];
         }
         if(isset($data['novalnet_mbway'])) {
             $this->value['novalnet_mbway'] = $data['novalnet_mbway'];

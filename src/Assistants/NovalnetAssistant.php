@@ -924,13 +924,7 @@ class NovalnetAssistant extends WizardProvider
                 $allowedCountries = [
                     20, // PL
                 ];
-                break;  
-            case 'novalnetPayconiq':
-                $allowedCountries = [
-                    1, // DE
-                    17, // LU
-                ];
-                break;   
+                break;    
             case 'novalnetMbway':
                 $allowedCountries = [
                     22, // PT

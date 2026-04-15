@@ -31,7 +31,6 @@ use Novalnet\Methods\NovalnetAlipayPaymentMethod;
 use Novalnet\Methods\NovalnetWechatPayPaymentMethod;
 use Novalnet\Methods\NovalnetTrustlyPaymentMethod;
 use Novalnet\Methods\NovalnetBlikPaymentMethod;
-use Novalnet\Methods\NovalnetPayconiqPaymentMethod;
 use Novalnet\Methods\NovalnetMbwayPaymentMethod;
 use Novalnet\Methods\NovalnetACHPaymentMethod;
 use Novalnet\Methods\NovalnetTwintPaymentMethod;
@@ -148,7 +147,6 @@ class PaymentHelper
             NovalnetWechatPayPaymentMethod::PAYMENT_KEY             => NovalnetWechatPayPaymentMethod::class,
             NovalnetTrustlyPaymentMethod::PAYMENT_KEY               => NovalnetTrustlyPaymentMethod::class,
             NovalnetBlikPaymentMethod::PAYMENT_KEY                  => NovalnetBlikPaymentMethod::class,
-            NovalnetPayconiqPaymentMethod::PAYMENT_KEY              => NovalnetPayconiqPaymentMethod::class,
             NovalnetMbwayPaymentMethod::PAYMENT_KEY                 => NovalnetMbwayPaymentMethod::class,
             NovalnetACHPaymentMethod::PAYMENT_KEY                   => NovalnetACHPaymentMethod::class,
             NovalnetTwintPaymentMethod::PAYMENT_KEY                 => NovalnetTwintPaymentMethod::class,
@@ -228,7 +226,6 @@ class PaymentHelper
                     NovalnetWechatPayPaymentMethod::PAYMENT_KEY,
                     NovalnetTrustlyPaymentMethod::PAYMENT_KEY,
                     NovalnetBlikPaymentMethod::PAYMENT_KEY,
-                    NovalnetPayconiqPaymentMethod::PAYMENT_KEY,
                     NovalnetMbwayPaymentMethod::PAYMENT_KEY,
                     NovalnetACHPaymentMethod::PAYMENT_KEY,
                     NovalnetTwintPaymentMethod::PAYMENT_KEY,
@@ -570,7 +567,6 @@ class PaymentHelper
             'WECHATPAY'                     => 'NOVALNET_WECHAT_PAY',
             'TRUSTLY'                       => 'NOVALNET_TRUSTLY',
             'BLIK'                          => 'NOVALNET_BLIK',
-            'PAYCONIQ'                      => 'NOVALNET_PAYCONIQ',
             'MBWAY'                         => 'NOVALNET_MBWAY',
             'DIRECT_DEBIT_ACH'              => 'NOVALNET_ACH',
             'TWINT'                         => 'NOVALNET_TWINT',

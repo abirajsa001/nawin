@@ -72,7 +72,6 @@ class CreateNovalnetPaymentMethods1230
             'NOVALNET_WECHAT_PAY'               => 'Novalnet WeChat Pay',
             'NOVALNET_TRUSTLY'                  => 'Novalnet Trustly',
             'NOVALNET_BLIK'                     => 'Novalnet Blik',
-            'NOVALNET_PAYCONIQ'                 => 'Novalnet Payconiq',
             'NOVALNET_MBWAY'                    => 'Novalnet MBway',
             'NOVALNET_ACH'                      => 'Novalnet Direct Debit ACH',
             'NOVALNET_TWINT'                    => 'Novalnet TWINT',

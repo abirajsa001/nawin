@@ -89,7 +89,7 @@ class PaymentService
     /**
      * @var redirectPayment
      */
-    private $redirectPayment = ['NOVALNET_APPLEPAY', 'NOVALNET_IDEAL', 'NOVALNET_PRZELEWY24', 'NOVALNET_EPS', 'NOVALNET_PAYPAL', 'NOVALNET_POSTFINANCE_CARD', 'NOVALNET_POSTFINANCE_EFINANCE', 'NOVALNET_BANCONTACT', 'NOVALNET_ONLINE_BANK_TRANSFER', 'NOVALNET_ALIPAY', 'NOVALNET_WECHAT_PAY', 'NOVALNET_TRUSTLY', 'NOVALNET_BLIK', 'NOVALNET_PAYCONIQ', 'NOVALNET_TWINT'];
+    private $redirectPayment = ['NOVALNET_APPLEPAY', 'NOVALNET_IDEAL', 'NOVALNET_PRZELEWY24', 'NOVALNET_EPS', 'NOVALNET_PAYPAL', 'NOVALNET_POSTFINANCE_CARD', 'NOVALNET_POSTFINANCE_EFINANCE', 'NOVALNET_BANCONTACT', 'NOVALNET_ONLINE_BANK_TRANSFER', 'NOVALNET_ALIPAY', 'NOVALNET_WECHAT_PAY', 'NOVALNET_TRUSTLY', 'NOVALNET_BLIK', 'NOVALNET_TWINT'];
 
     /**
      * Constructor.
@@ -438,7 +438,6 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
             'NOVALNET_WECHAT_PAY'           => 'WECHATPAY',
             'NOVALNET_TRUSTLY'              => 'TRUSTLY',
             'NOVALNET_BLIK'                 => 'BLIK',
-            'NOVALNET_PAYCONIQ'             => 'PAYCONIQ',
             'NOVALNET_MBWAY'                => 'MBWAY',
             'NOVALNET_ACH'                  => 'DIRECT_DEBIT_ACH',
             'NOVALNET_TWINT'                => 'TWINT',
