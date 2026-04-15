@@ -1122,7 +1122,7 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
      * @return string
      */
     public function getBankDetailsInformation($transactionData)
-    {
+    { 
         if(in_array($transactionData['paymentName'], ['novalnet_instalment_invoice', 'novalnet_instalment_sepa']) && $transactionData['cycle_amount']) {
             $invoiceComments = PHP_EOL . sprintf($this->paymentHelper->getTranslatedText('transfer_amount_duedate_text'), number_format($transactionData['cycle_amount'] / 100 ,2), $transactionData['currency'], date('Y/m/d', (int)strtotime($transactionData['due_date'])));
             // If the transaction is in On-Hold not displaying the due date
@@ -1140,7 +1140,7 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
         $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('iban') . $transactionData['invoice_iban'];
         $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('bic') . $transactionData['invoice_bic'];
         $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('bank') . $transactionData['invoice_bankname'];
-        $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('place') . $transactionData['invoice_bankplace'];
+        $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('place') . $transactionData['invoice_bankplace'];   
         // Adding the payment reference details
         $invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('any_one_reference_text');
 		$invoiceComments .= PHP_EOL . $this->paymentHelper->getTranslatedText('payment_reference1') . 'TID ' . (!empty($transactionData['tid']) ? $transactionData['tid'] : $transactionData['referenceTid']);
