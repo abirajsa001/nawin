@@ -64,6 +64,7 @@ class NovalnetGooglePayButtonDataProvider
                 // Get the order total basket amount
                 $orderAmount = $paymentHelper->convertAmountToSmallerUnit($basket->basketAmount);
             }
+            $this->getLogger(__METHOD__)->error('Amountnovalnet ' . $basket->basketAmount);
             // Get the Payment MOP Id
             $paymentMethodDetails = $paymentHelper->getPaymentMethodByKey('NOVALNET_GOOGLEPAY');
             // Get the order language
