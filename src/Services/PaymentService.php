@@ -1415,7 +1415,7 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
             if(($paymentResponseData['instalment']['cancel_type'] == 'REMAINING_CYCLES')) {
                 $paymentResponseData['bookingText'] = sprintf($this->paymentHelper->getTranslatedText('instalment_remaining_cycle_cancel', $transactionData['lang']),$paymentResponseData['transaction']['tid'], date('d-m-Y'));
             }
-            // $paymentResponseData['transaction']['amount'] = 0;
+            $paymentResponseData['transaction']['amount'] = 0;
             $additionalInfo = json_decode($transactionData['additionalInfo'], true);
             $paymentResponseData['transaction']['currency'] = $additionalInfo['currency'];
             // Insert the updated transaction details into Novalnet DB
