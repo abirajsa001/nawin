@@ -721,8 +721,6 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
                 $additionalInfo['next_cycle_date']        = $paymentResponseData['instalment']['next_cycle_date'];
                 $additionalInfo['cycles_executed']        = $paymentResponseData['instalment']['cycles_executed'];
                 $additionalInfo['cycle_amount']           = $paymentResponseData['instalment']['cycle_amount'];
-                $additionalInfo['bookingText']           = $paymentResponseData['bookingText'];
-
             }
 
             // Add the Bank details for the invoice payments
@@ -1417,6 +1415,7 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
             if(($paymentResponseData['instalment']['cancel_type'] == 'REMAINING_CYCLES')) {
                 $paymentResponseData['bookingText'] = sprintf($this->paymentHelper->getTranslatedText('instalment_remaining_cycle_cancel', $transactionData['lang']),$paymentResponseData['transaction']['tid'], date('d-m-Y'));
             }
+            // $paymentResponseData['transaction']['amount'] = 0;
             $additionalInfo = json_decode($transactionData['additionalInfo'], true);
             $paymentResponseData['transaction']['currency'] = $additionalInfo['currency'];
             // Insert the updated transaction details into Novalnet DB
