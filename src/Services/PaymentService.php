@@ -732,11 +732,6 @@ public function allowedCountries(Basket $basket, $allowedCountry): bool
                 $additionalInfo['cycles_executed']        = $paymentResponseData['instalment']['cycles_executed'];
                 $additionalInfo['cycle_amount']           = $paymentResponseData['instalment']['cycle_amount'];
             }
-            if(in_array($paymentResponseData['payment_method'], [ 'novalnet_instalment_invoice'])) {
-
-                $additionalInfo['cycle_amount']   
-
-            }
 
             // Add the pament reference details for the Multibanco
             if($paymentResponseData['payment_method'] == 'novalnet_multibanco') {
